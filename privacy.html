@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Тема до загрузки CSS — без вспышки (STANDARD §5 C12): ?theme= (без сохранения) → localStorage → система. -->
+  <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('theme')}catch(e){}try{var q=new URLSearchParams(location.search).get('theme');if(q==='light'||q==='dark')t=q}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);d.classList.add('js')})()</script>
+  <title>Политика обработки персональных данных · COGNITRACK</title>
+  <meta name="description" content="Как COGNITRACK обрабатывает данные из формы заявки на пилотное тестирование.">
+  <meta name="theme-color" content="#F6F6FA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E1013" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- C1 Шапка -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="index.html"><svg class="logo__icon" viewBox="0 0 48 48" width="32" height="32" aria-hidden="true" focusable="false"><path class="logo__eye" d="M4 24 C12 8 36 8 44 24 C36 40 12 40 4 24 Z"/><path class="logo__wave" d="M9 24 H14 L17 17 L20.5 31 L24 19 L27 28 L30 22 L33 24 H39"/></svg><span class="logo__word">COGNITRACK</span></a>
+      <nav class="nav" id="site-nav" aria-label="Разделы сайта">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html#problem">Проблема</a></li>
+          <li><a class="nav__link" href="index.html#product">Продукт</a></li>
+          <li><a class="nav__link" href="index.html#how">Как проходит пилот</a></li>
+          <li><a class="nav__link" href="index.html#audience">Кому подходит</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary btn--header" href="index.html#pilot">Оставить заявку</a>
+      <!-- C12 Переключатель темы -->
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Тёмная тема">
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M20 14.5 A8 8 0 1 1 9.5 4 A6.5 6.5 0 0 0 20 14.5 Z"/></svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2 V4 M12 20 V22 M2 12 H4 M20 12 H22 M4.9 4.9 L6.3 6.3 M17.7 17.7 L19.1 19.1 M4.9 19.1 L6.3 17.7 M17.7 6.3 L19.1 4.9"/></svg>
+      </button>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню" data-label-open="Открыть меню" data-label-close="Закрыть меню">
+        <span class="burger__line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <!--
+    Вторичная страница по STANDARD §5 v1.5: C1 + C3 с H1 + C9 + C8.
+    Оператор, контакт и срок хранения — content-facts [ОК 08.10]; после регистрации ООО оператор меняется.
+    TODO: юридическая проверка текста (Софья / УрФУ).
+  -->
+  <main id="main">
+    <section class="section" aria-labelledby="doc-title">
+      <div class="container doc">
+        <!-- C3 с H1 -->
+        <div class="section-head">
+          <p class="overline">Документ</p>
+          <h1 class="h1" id="doc-title">Политика обработки персональных данных</h1>
+          <p class="lead">Как обрабатываются данные, которые вы оставляете в&nbsp;форме заявки на&nbsp;пилотное тестирование. Обработку персональных данных регулирует 152-ФЗ «О&nbsp;персональных данных».</p>
+        </div>
+
+        <!-- C9 Текстовый блок -->
+        <section class="prose" aria-labelledby="operator">
+          <h2 class="h2" id="operator">Оператор</h2>
+          <p>Оператор персональных данных: Воробьёва Софья Сергеевна (физическое лицо).</p>
+          <p>Вопросы об&nbsp;обработке данных можно задать по&nbsp;адресу: <a href="mailto:notsvorobs@gmail.com">notsvorobs@gmail.com</a></p>
+        </section>
+
+        <!-- C9 Текстовый блок -->
+        <section class="prose" aria-labelledby="data">
+          <h2 class="h2" id="data">Состав данных</h2>
+          <p>Только то, что вы вводите в&nbsp;форму заявки:</p>
+          <ul>
+            <li>имя;</li>
+            <li>организацию;</li>
+            <li>роль (врач, исследователь, руководитель, партнёр или&nbsp;другое);</li>
+            <li>контакт: телефон, e-mail или&nbsp;Telegram;</li>
+            <li>комментарий, если вы его написали.</li>
+          </ul>
+          <p>Вместе с&nbsp;заявкой передаются адрес страницы, с&nbsp;которой вы перешли на&nbsp;сайт, и&nbsp;метки рекламной ссылки (utm), если они были в&nbsp;адресе.</p>
+        </section>
+
+        <!-- C9 Текстовый блок -->
+        <section class="prose" aria-labelledby="purpose">
+          <h2 class="h2" id="purpose">Цель обработки</h2>
+          <p>Связь с&nbsp;вами по&nbsp;заявке на&nbsp;пилотное тестирование.</p>
+        </section>
+
+        <!-- C9 Текстовый блок -->
+        <section class="prose" aria-labelledby="basis">
+          <h2 class="h2" id="basis">Правовое основание</h2>
+          <p>Ваше согласие на&nbsp;обработку персональных данных. Вы&nbsp;даёте его отметкой в&nbsp;форме; без отметки заявка не&nbsp;отправляется.</p>
+        </section>
+
+        <!-- C9 Текстовый блок -->
+        <section class="prose" aria-labelledby="transfer">
+          <h2 class="h2" id="transfer">Передача данных</h2>
+          <!-- TODO: юридическая проверка схемы каналов (STANDARD §6 v1.5): сервисы Google и Telegram — передача данных за рубеж -->
+          <p>Заявку принимает и&nbsp;обрабатывает сервис Google Apps Script. Дальше она хранится и&nbsp;передаётся так:</p>
+          <ul>
+            <li>заявка целиком приходит оператору на&nbsp;электронную почту Gmail;</li>
+            <li>заявка сохраняется в&nbsp;Google Таблице оператора, доступ к&nbsp;которой есть только у&nbsp;оператора;</li>
+            <li>в&nbsp;мессенджер Telegram отправляется только уведомление о&nbsp;новой заявке и&nbsp;выбранная роль, без&nbsp;имени, организации, контакта и&nbsp;комментария.</li>
+          </ul>
+          <p>Gmail, Google Таблицы и&nbsp;Google Apps Script&nbsp;— сервисы компании Google.</p>
+        </section>
+
+        <!-- C9 Текстовый блок -->
+        <section class="prose" aria-labelledby="retention">
+          <h2 class="h2" id="retention">Срок хранения</h2>
+          <p>Заявки хранятся 1&nbsp;год с&nbsp;момента получения, затем удаляются: из&nbsp;таблицы&nbsp;— автоматически, письма&nbsp;— оператором.</p>
+        </section>
+
+        <!-- C9 Текстовый блок -->
+        <section class="prose" aria-labelledby="cookie">
+          <h2 class="h2" id="cookie">Cookie и&nbsp;аналитика</h2>
+          <p>Сайт не&nbsp;использует cookie и&nbsp;сервисы веб-аналитики.</p>
+        </section>
+
+        <!-- C9 Текстовый блок -->
+        <section class="prose" aria-labelledby="rights">
+          <h2 class="h2" id="rights">Ваши права</h2>
+          <p>Вы можете узнать, какие ваши данные есть у&nbsp;оператора, попросить исправить или&nbsp;удалить их и&nbsp;отозвать согласие. Для этого напишите оператору: <a href="mailto:notsvorobs@gmail.com">notsvorobs@gmail.com</a></p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- C8 Подвал -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <p class="site-footer__name logo"><svg class="logo__icon" viewBox="0 0 48 48" width="32" height="32" aria-hidden="true" focusable="false"><path class="logo__eye" d="M4 24 C12 8 36 8 44 24 C36 40 12 40 4 24 Z"/><path class="logo__wave" d="M9 24 H14 L17 17 L20.5 31 L24 19 L27 28 L30 22 L33 24 H39"/></svg><span class="logo__word">COGNITRACK</span></p>
+        <p class="site-footer__note">Победитель конкурса «Студенческий стартап» Фонда содействия инновациям</p>
+      </div>
+      <ul class="site-footer__contacts" aria-label="Контакты">
+        <li><a class="site-footer__link" href="tel:+79991840522">+7&nbsp;999&nbsp;184-05-22</a></li>
+        <li><a class="site-footer__link" href="mailto:notsvorobs@gmail.com">notsvorobs@gmail.com</a></li>
+        <li><a class="site-footer__link" href="https://t.me/svorobs">Telegram @svorobs</a></li>
+      </ul>
+      <a class="site-footer__link" href="privacy.html" aria-current="page">Политика обработки персональных данных</a>
+    </div>
+  </footer>
+</body>
+</html>

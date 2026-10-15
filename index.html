@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Тема до загрузки CSS — без вспышки (STANDARD §5 C12): ?theme= (без сохранения) → localStorage → система. -->
+  <script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem('theme')}catch(e){}try{var q=new URLSearchParams(location.search).get('theme');if(q==='light'||q==='dark')t=q}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);d.classList.add('js')})()</script>
+  <title>COGNITRACK&nbsp;— синхронная запись ЭЭГ и&nbsp;движений глаз</title>
+  <meta name="description" content="COGNITRACK: программа синхронно записывает ЭЭГ и движения глаз, чистит сигнал от помех и показывает связь стимула, взгляда и реакции мозга. Пилот для частных неврологических клиник.">
+  <meta name="theme-color" content="#F6F6FA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0E1013" media="(prefers-color-scheme: dark)">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="COGNITRACK: ЭЭГ и движения глаз в одной записи">
+  <meta property="og:description" content="Прототип в разработке. Ищем частные неврологические клиники для пилота.">
+  <meta property="og:image" content="https://glebmozglyakov.github.io/cognitrack/img/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/onest-cyrillic-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/onest-cyrillic-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- C1 Шапка -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="logo" href="#top"><svg class="logo__icon" viewBox="0 0 48 48" width="32" height="32" aria-hidden="true" focusable="false"><path class="logo__eye" d="M4 24 C12 8 36 8 44 24 C36 40 12 40 4 24 Z"/><path class="logo__wave" d="M9 24 H14 L17 17 L20.5 31 L24 19 L27 28 L30 22 L33 24 H39"/></svg><span class="logo__word">COGNITRACK</span></a>
+      <nav class="nav" id="site-nav" aria-label="Разделы страницы">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#product">Продукт</a></li>
+          <li><a class="nav__link" href="#steps">Пилот</a></li>
+          <li><a class="nav__link" href="#pricing">Цены</a></li>
+          <li><a class="nav__link" href="#about">О проекте</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary btn--header" href="#pilot">Оставить заявку</a>
+      <!-- C12 Переключатель темы -->
+      <button class="theme-toggle" type="button" aria-pressed="false" aria-label="Тёмная тема">
+        <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><path d="M20 14.5 A8 8 0 1 1 9.5 4 A6.5 6.5 0 0 0 20 14.5 Z"/></svg>
+        <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2 V4 M12 20 V22 M2 12 H4 M20 12 H22 M4.9 4.9 L6.3 6.3 M17.7 17.7 L19.1 19.1 M4.9 19.1 L6.3 17.7 M17.7 6.3 L19.1 4.9"/></svg>
+      </button>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Открыть меню" data-label-open="Открыть меню" data-label-close="Закрыть меню">
+        <span class="burger__line" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- C2 Первый экран -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__glow" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="overline"><span class="status-dot" aria-hidden="true"></span>COGNITRACK · прототип в&nbsp;разработке</p>
+          <h1 class="h1" id="hero-title">ЭЭГ и&nbsp;движения глаз <span class="accent">в&nbsp;одной записи</span></h1>
+          <p class="lead">Программа синхронно записывает ЭЭГ и&nbsp;взгляд, сама чистит сигнал от&nbsp;помех и&nbsp;показывает, как мозг реагирует на&nbsp;стимул.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary btn--glow" href="#pilot" data-magnetic>Оставить заявку</a>
+            <a class="btn btn--ghost" href="#product" data-magnetic>Подробнее о&nbsp;продукте</a>
+          </div>
+          <p class="hero__note">Ищем частные неврологические клиники для&nbsp;пилота</p>
+        </div>
+
+        <div class="monitor" data-parallax aria-hidden="true">
+          <div class="monitor__bar">
+            <span class="monitor__rec"><span class="status-dot status-dot--rec"></span>Запись</span>
+            <span class="monitor__sync">синхронно</span>
+          </div>
+          <div class="monitor__body">
+            <ul class="monitor__labels">
+              <li class="monitor__label monitor__label--eeg">ЭЭГ</li>
+              <li class="monitor__label monitor__label--eye">Взгляд</li>
+              <li class="monitor__label monitor__label--stim">Стимул</li>
+            </ul>
+            <canvas class="monitor__canvas" width="640" height="300"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- C13 Бегущая строка: только слова из утверждённого описания и стадии (content-facts [ОК]) -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <ul class="marquee__list">
+          <li>ЭЭГ</li><li>движения глаз</li><li>синхронная запись</li><li>очистка от&nbsp;помех</li><li>стимул</li><li>взгляд</li><li>реакция мозга</li><li>графики связи</li><li>прототип в&nbsp;разработке</li>
+        </ul>
+        <ul class="marquee__list">
+          <li>ЭЭГ</li><li>движения глаз</li><li>синхронная запись</li><li>очистка от&nbsp;помех</li><li>стимул</li><li>взгляд</li><li>реакция мозга</li><li>графики связи</li><li>прототип в&nbsp;разработке</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Продукт (правки 14.10): C3 + цитата утверждённого описания + C11 -->
+    <section class="section" id="product" aria-labelledby="product-title">
+      <div class="container stack">
+        <div class="section-head" data-reveal>
+          <p class="overline">Продукт</p>
+          <h2 class="h2" id="product-title">Запись, очистка и&nbsp;графики <span class="accent">в&nbsp;одной программе</span></h2>
+        </div>
+
+        <figure class="quote" data-reveal>
+          <blockquote class="quote__text">
+            <p>Программа синхронно записывает ЭЭГ и&nbsp;движения глаз, автоматически чистит сигнал от&nbsp;помех и&nbsp;показывает графики связи стимула, взгляда и&nbsp;реакции мозга.</p>
+          </blockquote>
+          <figcaption class="quote__caption">Описание COGNITRACK</figcaption>
+        </figure>
+
+        <div class="scheme" data-scheme data-reveal>
+          <div class="scheme__tabs" role="tablist" aria-label="Этапы работы COGNITRACK">
+            <span class="scheme__rail" aria-hidden="true"><span class="scheme__fill"></span></span>
+            <button class="scheme__tab" type="button" role="tab" id="tab-stim" aria-selected="true" aria-controls="panel-stim">
+              <span class="scheme__node" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><circle cx="12" cy="12" r="4"/><path d="M12 2 V5 M12 19 V22 M2 12 H5 M19 12 H22"/></svg></span>
+              <span class="scheme__name">Стимул</span>
+            </button>
+            <button class="scheme__tab" type="button" role="tab" id="tab-rec" aria-selected="false" aria-controls="panel-rec" tabindex="-1">
+              <span class="scheme__node" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><path d="M2 9 H6 L8 5 L11 13 L13 8 L15 9 H22"/><path d="M2 17 H10 L12 15 H16 L18 18 H22"/></svg></span>
+              <span class="scheme__name">Запись</span>
+            </button>
+            <button class="scheme__tab" type="button" role="tab" id="tab-clean" aria-selected="false" aria-controls="panel-clean" tabindex="-1">
+              <span class="scheme__node" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><path d="M2 12 L4 8 L6 16 L8 6 L10 15"/><path d="M13 12 C15 9 17 9 19 12 C20 14 21 14 22 12"/></svg></span>
+              <span class="scheme__name">Очистка</span>
+            </button>
+            <button class="scheme__tab" type="button" role="tab" id="tab-plot" aria-selected="false" aria-controls="panel-plot" tabindex="-1">
+              <span class="scheme__node" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" focusable="false"><path d="M3 3 V21 H21"/><path d="M6 16 L10 11 L14 13 L20 6"/></svg></span>
+              <span class="scheme__name">Графики</span>
+            </button>
+          </div>
+          <div class="scheme__panel" role="tabpanel" id="panel-stim" aria-labelledby="tab-stim" tabindex="0">
+            <h3 class="h3">Стимул</h3>
+            <p>То, на&nbsp;что смотрит пациент. С&nbsp;ним программа связывает взгляд и&nbsp;реакцию мозга.</p>
+          </div>
+          <div class="scheme__panel" role="tabpanel" id="panel-rec" aria-labelledby="tab-rec" tabindex="0" hidden>
+            <h3 class="h3">Запись</h3>
+            <p>ЭЭГ и&nbsp;движения глаз записываются синхронно, на&nbsp;одной шкале времени.</p>
+          </div>
+          <div class="scheme__panel" role="tabpanel" id="panel-clean" aria-labelledby="tab-clean" tabindex="0" hidden>
+            <h3 class="h3">Очистка</h3>
+            <p>Программа автоматически чистит сигнал от&nbsp;помех.</p>
+          </div>
+          <div class="scheme__panel" role="tabpanel" id="panel-plot" aria-labelledby="tab-plot" tabindex="0" hidden>
+            <h3 class="h3">Графики</h3>
+            <p>Графики показывают связь стимула, взгляда и&nbsp;реакции мозга.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Как проходит пилот: C3 + C5 -->
+    <section class="section section--alt" id="steps" aria-labelledby="steps-title">
+      <div class="container stack">
+        <div class="section-head" data-reveal>
+          <p class="overline">Пилот</p>
+          <h2 class="h2" id="steps-title">Пилот в&nbsp;<span class="accent">частной неврологической клинике</span></h2>
+          <p class="lead">Что будет после заявки.</p>
+        </div>
+        <ol class="steps" data-steps data-stagger>
+          <li class="step" data-spotlight>
+            <h3 class="h3">Заявка</h3>
+            <p>Заполните форму внизу страницы.</p>
+          </li>
+          <li class="step" data-spotlight>
+            <h3 class="h3">Ответ за&nbsp;2&nbsp;рабочих дня</h3>
+            <p>Рассмотрим заявку и&nbsp;свяжемся с&nbsp;вами.</p>
+          </li>
+          <li class="step" data-spotlight>
+            <h3 class="h3">Обсуждение условий</h3>
+            <p>Согласуем формат и&nbsp;условия пилотного тестирования.</p>
+          </li>
+        </ol>
+        <div data-reveal><a class="btn btn--primary" href="#pilot" data-magnetic>Оставить заявку</a></div>
+      </div>
+    </section>
+
+    <!-- Цены: C3 + 2×C10 -->
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <div class="container stack">
+        <div class="section-head" data-reveal>
+          <p class="overline">Цены</p>
+          <h2 class="h2" id="pricing-title">Сколько <span class="accent">стоит</span></h2>
+          <p class="lead">Прототип в&nbsp;разработке. Детали обсудим на&nbsp;созвоне.</p>
+        </div>
+        <ul class="cards cards--2" data-stagger>
+          <li class="price" data-reveal data-spotlight>
+            <h3 class="price__name">Лицензия</h3>
+            <p class="price__amount">75&nbsp;000&nbsp;₽</p>
+            <p class="price__unit">в&nbsp;год за&nbsp;рабочее место</p>
+            <a class="btn btn--ghost price__cta" href="#pilot">Оставить заявку</a>
+          </li>
+          <li class="price price--accent" data-reveal data-spotlight>
+            <h3 class="price__name">Под ключ</h3>
+            <p class="price__amount">250–300&nbsp;тыс.&nbsp;₽</p>
+            <p class="price__unit">комплект «под ключ»</p>
+            <a class="btn btn--primary price__cta" href="#pilot">Оставить заявку</a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- О проекте: C3 + 2×C4 -->
+    <section class="section section--alt" id="about" aria-labelledby="about-title">
+      <div class="container stack">
+        <div class="section-head" data-reveal>
+          <p class="overline">О&nbsp;проекте</p>
+          <h2 class="h2" id="about-title">Кто делает <span class="accent">COGNITRACK</span></h2>
+        </div>
+        <ul class="cards cards--2" data-stagger>
+          <li class="card card--row" data-reveal data-spotlight>
+            <span class="avatar" aria-hidden="true">СВ</span>
+            <div>
+              <h3 class="h3">Софья Воробьёва</h3>
+              <p>Руководитель проекта</p>
+            </div>
+          </li>
+          <li class="card card--row" data-reveal data-spotlight>
+            <span class="card__badge" aria-hidden="true"><svg class="card__icon" viewBox="0 0 32 32" width="32" height="32" focusable="false"><path d="M10 4 H22 V12 C22 16 19 19 16 19 C13 19 10 16 10 12 Z"/><path d="M10 7 H5 C5 11 7 13 10 13 M22 7 H27 C27 11 25 13 22 13"/><path d="M16 19 V24 M11 28 H21 M12 28 L13 24 H19 L20 28"/></svg></span>
+            <div>
+              <h3 class="h3">Победитель конкурса</h3>
+              <p>«Студенческий стартап» Фонда содействия инновациям</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- C7 Блок заявки -->
+    <section class="section" id="pilot" aria-labelledby="pilot-title">
+      <div class="container">
+        <div class="lead-block">
+          <p class="overline">Заявка</p>
+          <h2 class="h2" id="pilot-title">Заявка на&nbsp;<span class="accent">пилот</span></h2>
+          <p class="lead">Рассмотрим заявку и&nbsp;в&nbsp;течение 2&nbsp;рабочих дней свяжемся с&nbsp;вами, чтобы обсудить условия пилота.</p>
+
+          <form class="form" id="pilot-form" novalidate>
+            <div class="field">
+              <label class="field__label" for="f-name">Имя <span aria-hidden="true">*</span></label>
+              <input class="field__input" id="f-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="f-name-error">
+              <p class="field__error" id="f-name-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="f-org">Организация <span aria-hidden="true">*</span></label>
+              <input class="field__input" id="f-org" name="org" type="text" autocomplete="organization" maxlength="200" required aria-describedby="f-org-error">
+              <p class="field__error" id="f-org-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="f-role">Роль</label>
+              <select class="field__input" id="f-role" name="role">
+                <option value="">Не выбрана</option>
+                <option value="врач">Врач</option>
+                <option value="исследователь">Исследователь</option>
+                <option value="руководитель">Руководитель</option>
+                <option value="партнёр">Партнёр</option>
+                <option value="другое">Другое</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="f-contact">Контакт <span aria-hidden="true">*</span></label>
+              <p class="field__hint" id="f-contact-hint">Телефон, e-mail или&nbsp;Telegram @username</p>
+              <input class="field__input" id="f-contact" name="contact" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="100" required aria-describedby="f-contact-hint f-contact-error">
+              <p class="field__error" id="f-contact-error" hidden></p>
+            </div>
+
+            <div class="field">
+              <label class="field__label" for="f-comment">Комментарий</label>
+              <textarea class="field__input field__input--area" id="f-comment" name="comment" rows="4" maxlength="2000"></textarea>
+            </div>
+
+            <!-- Ловушка для ботов (honeypot): люди и скринридеры её не видят. -->
+            <div class="hp" aria-hidden="true">
+              <label for="f-website">Не заполняйте это поле</label>
+              <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <div class="field">
+              <label class="consent" for="f-consent">
+                <input class="consent__box" id="f-consent" name="consent" type="checkbox" required aria-describedby="f-consent-error">
+                <span>Согласен(на) на&nbsp;обработку персональных данных</span>
+              </label>
+              <a class="text-link" href="privacy.html">Политика обработки персональных данных</a>
+              <p class="field__error" id="f-consent-error" hidden></p>
+            </div>
+
+            <button class="btn btn--primary form__submit" type="submit">Отправить заявку на&nbsp;пилот</button>
+
+            <!-- Тексты интерфейса для main.js — в HTML, чтобы их видели words.sh и facts.mjs (STANDARD §6 v1.5) -->
+            <template id="form-texts">
+              <p data-text="name-required">Укажите имя</p>
+              <p data-text="org-required">Укажите организацию</p>
+              <p data-text="contact-required">Укажите телефон, e-mail или&nbsp;Telegram</p>
+              <p data-text="contact-invalid">Не похоже на&nbsp;телефон, e-mail или&nbsp;Telegram @username. Проверьте, нет&nbsp;ли опечатки</p>
+              <p data-text="consent-required">Нужно согласие на&nbsp;обработку данных</p>
+              <p data-text="sending">Отправляем…</p>
+            </template>
+
+            <div class="form__status form__status--error" id="form-error" role="alert" hidden>
+              <p>Не отправилось. Попробуйте ещё раз или&nbsp;напишите: <a href="https://t.me/svorobs">@svorobs</a> или&nbsp;<a href="mailto:notsvorobs@gmail.com">notsvorobs@gmail.com</a></p>
+            </div>
+          </form>
+
+          <div class="form__status form__status--ok" id="form-success" tabindex="-1" hidden>
+            <h3 class="h3">Заявка отправлена</h3>
+            <p>Рассмотрим её и&nbsp;свяжемся с&nbsp;вами в&nbsp;течение 2&nbsp;рабочих дней.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- C8 Подвал -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <div class="site-footer__brand">
+        <p class="site-footer__name logo"><svg class="logo__icon" viewBox="0 0 48 48" width="32" height="32" aria-hidden="true" focusable="false"><path class="logo__eye" d="M4 24 C12 8 36 8 44 24 C36 40 12 40 4 24 Z"/><path class="logo__wave" d="M9 24 H14 L17 17 L20.5 31 L24 19 L27 28 L30 22 L33 24 H39"/></svg><span class="logo__word">COGNITRACK</span></p>
+        <p class="site-footer__note">Победитель конкурса «Студенческий стартап» Фонда содействия инновациям</p>
+      </div>
+      <ul class="site-footer__contacts" aria-label="Контакты">
+        <li><a class="site-footer__link" href="tel:+79991840522">+7&nbsp;999&nbsp;184-05-22</a></li>
+        <li><a class="site-footer__link" href="mailto:notsvorobs@gmail.com">notsvorobs@gmail.com</a></li>
+        <li><a class="site-footer__link" href="https://t.me/svorobs">Telegram @svorobs</a></li>
+      </ul>
+      <a class="site-footer__link" href="privacy.html">Политика обработки персональных данных</a>
+    </div>
+  </footer>
+</body>
+</html>
